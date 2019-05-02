@@ -6,19 +6,22 @@ const LessPluginFunctions = require('less-plugin-functions');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 //预渲染
-const PreRender = require('prerender-spa-plugin');
+// const PreRender = require('prerender-spa-plugin');
+
+// process.env.NODE_ENV = 'production';
 
 const config = webpackMerge(baseConfig, {
     mode: 'production',
+    target: 'node',
     output: {
-        publicPath: "/static/",
-        path: path.join(__dirname, 'dist'),
-        filename: 'js/[name]-[contentHash].js',
-        libraryTarget: 'var',
-        library: 'MyClient'
+        publicPath: "./",
+        path: path.join(__dirname, '../dist/static'),
+        filename: '[name].js',
+        libraryTarget: 'commonjs2',
+        // library: 'MyClient'
     },
     entry: {
-        client: path.resolve(__dirname, "/client/index.js")
+        client: path.resolve(__dirname, "../client/build/buildSSR.js")
     },
     module: {
         rules: [
@@ -26,7 +29,7 @@ const config = webpackMerge(baseConfig, {
                 test: /\.css$/,
                 use: [
                     'style-loader',
-                    MiniCssExtractPlugin.loader,
+                    // MiniCssExtractPlugin.loader,
                     'css-loader',
                     {
                         loader: 'postcss-loader',
@@ -37,7 +40,8 @@ const config = webpackMerge(baseConfig, {
                                 require('autoprefixer')({
                                     browsers: [
                                         "> 0.01%"
-                                    ]
+                                    ],
+                                    flexbox: 'no-2009',
                                 })
                             ]
                         }
@@ -48,7 +52,7 @@ const config = webpackMerge(baseConfig, {
                 test: /\.(scss|sass)$/,
                 use: [
                     'style-loader',
-                    MiniCssExtractPlugin.loader,
+                    // MiniCssExtractPlugin.loader,
                     'css-loader',
                     {
                         loader: 'postcss-loader',
@@ -59,7 +63,8 @@ const config = webpackMerge(baseConfig, {
                                 require('autoprefixer')({
                                     browsers: [
                                         "> 0.01%"
-                                    ]
+                                    ],
+                                    flexbox: 'no-2009',
                                 })
                             ]
                         }
@@ -71,7 +76,7 @@ const config = webpackMerge(baseConfig, {
                 test: /\.less$/,
                 use: [
                     'style-loader',
-                    MiniCssExtractPlugin.loader,
+                    // MiniCssExtractPlugin.loader,
                     "css-loader",
                     {
                         loader: 'postcss-loader',
@@ -82,7 +87,8 @@ const config = webpackMerge(baseConfig, {
                                 require('autoprefixer')({
                                     browsers: [
                                         "> 0.01%"
-                                    ]
+                                    ],
+                                    flexbox: 'no-2009',
                                 })
                             ]
                         }
@@ -114,7 +120,7 @@ const config = webpackMerge(baseConfig, {
             cacheGroups: {
                 vendor: {
                     test: /\.js$/,
-                    chunks: "all", //表示显示块的范围，有三个可选值：initial(初始块)、async(按需加载块)、all(全部块)，默认为all;
+                    chunks: "async", //表示显示块的范围，有三个可选值：initial(初始块)、async(按需加载块)、all(全部块)，默认为all;
                     enforce: true
                 },
             }
@@ -122,9 +128,14 @@ const config = webpackMerge(baseConfig, {
     },
     plugins: [
         new webpack.NoEmitOnErrorsPlugin(),
-        new MiniCssExtractPlugin({ // 在plugins中配置属性
-            filename: 'css/[name]-[contentHash].css', // 配置提取出来的css名称
-            chunkFilename: "css/chunk-[id].css"
+        // new MiniCssExtractPlugin({ // 在plugins中配置属性
+        //     filename: 'css/[name]-[contentHash].css', // 配置提取出来的css名称
+        //     chunkFilename: "css/chunk-[id].css"
+        // }),
+        new webpack.DefinePlugin({
+            'process.env':{
+                'NODE_ENV': JSON.stringify('production')
+            },
         }),
         // new PreRender({
         //     staticDir: path.join(__dirname,'dist'),

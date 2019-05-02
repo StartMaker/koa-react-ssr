@@ -2,7 +2,10 @@ const path = require('path');
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const baseConfig = require('./webpack.base');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const LessPluginFunctions = require('less-plugin-functions');
+
+// process.env.NODE_ENV = 'development';
 
 const  config = webpackMerge(baseConfig, {
     mode: 'development',
@@ -23,7 +26,7 @@ const  config = webpackMerge(baseConfig, {
     //     compress: true
     // },
     entry: {
-        client: [path.resolve(__dirname, "../client/index.js")]
+        client: [path.resolve(__dirname, "../client/build/devSSR.js")]
     },
     devtool: 'source-map',
     module: {
@@ -61,6 +64,19 @@ const  config = webpackMerge(baseConfig, {
         ]
     },
     plugins: [
+        new HtmlWebpackPlugin({
+            template: "./client/index.html",
+            inject: true,
+            // favicon: './src/App/static/image/theme.jpg',
+            filename: "index.html",
+            hash: true
+            // loading: loading
+        }),
+        new webpack.DefinePlugin({
+            'process.env':{
+                'NODE_ENV': 'development'
+            },
+        }),
         // new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin()
     ]

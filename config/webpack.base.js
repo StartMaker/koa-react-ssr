@@ -1,6 +1,5 @@
 const path = require('path');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = {
     // output:{
@@ -74,7 +73,10 @@ module.exports = {
             {
                 test: /\.json?$/,
                 use: {
-                    loader: 'json-loader'
+                    loader: 'json-loader',
+                    options: {
+                        transpileOnly: true
+                    }
                 }
             }
         ]
@@ -83,15 +85,9 @@ module.exports = {
         extensions: [".js", ".jsx"]
     },
     plugins: [
-        new HtmlWebpackPlugin({
-            template: "./client/index.html",
-            inject: true,
-            // favicon: './src/App/static/image/theme.jpg',
-            filename: "index.html",
-            hash: true
-            // loading: loading
+        new CleanWebpackPlugin(['dist'], {
+            root: path.resolve(__dirname, '..'),
         }),
-        new CleanWebpackPlugin(),
         new ForkTsCheckerWebpackPlugin()
     ]
 };
