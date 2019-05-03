@@ -5,6 +5,7 @@ const ReactDOMRender = require('react-dom/server');
 console.log(bundle);
 
 module.exports = async (ctx) => {
+    ctx.response.status = 200;
     let html = createTemplate(ReactDOMRender.renderToStaticMarkup(bundle.default(ctx.request.url,{})));
-    ctx.body = html;
+    ctx.response.body = html;
 };

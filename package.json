@@ -82,6 +82,7 @@
     "koa-ejs": "^4.2.0",
     "koa-json": "^2.0.2",
     "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
     "less": "^3.9.0",
     "lodash": "^4.17.11",
     "react": "^16.7.0",
