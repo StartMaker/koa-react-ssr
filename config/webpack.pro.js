@@ -30,38 +30,6 @@ const config = webpackMerge(baseConfig, {
         })
     ],
     module: {
-        // rules: [
-        //     {
-        //         test: /\.(css|less)$/,
-        //         use: [
-        //             {
-        //                 loader: 'css-loader',
-        //                 options: {
-        //                     importLoaders: 1
-        //                 }
-        //             },
-        //             {
-        //                 loader: 'postcss-loader',
-        //                 options: {
-        //                     // exec: true,
-        //                     // parser: "sugarss",
-        //                     plugins: [
-        //                         // require('precss'),
-        //                         require('autoprefixer')({
-        //                             browsers: [
-        //                                 "> 0.01%"
-        //                             ],
-        //                             // flexbox: 'no-2009',
-        //                         })
-        //                     ]
-        //                 }
-        //             },
-        //             {
-        //                 loader: 'less-loader',
-        //             }
-        //         ]
-        //     }
-        // ]
         rules: [
             {
                 test: /\.css$/,
@@ -86,7 +54,7 @@ const config = webpackMerge(baseConfig, {
                                     browsers: [
                                         "> 0.01%"
                                     ],
-                                    // flexbox: 'no-2009',
+                                    flexbox: 'no-2009',
                                 })
                             ]
                         }

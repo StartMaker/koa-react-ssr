@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "main": "main.js",
   "scripts": {
-    "dev:server": "nodemon ./server/index.js",
-    "dev:client": "webpack-dev-server --config=./config/webpack.dev.js",
-    "build:client": "webpack --config=./config/webpack.pro.js",
-    "build:server": "webpack --config=./config/webpack.server.pro.js"
+    "dev:server": "set NODE_ENV=development && nodemon ./server/index.js",
+    "pro:server": "set NODE_ENV=production && nodemon ./server/index.js",
+    "build:client": "webpack --config=./config/webpack.pro.js"
   },
   "author": "",
   "license": "ISC",
