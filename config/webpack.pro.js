@@ -4,11 +4,11 @@ const webpackMerge = require('webpack-merge');
 const baseConfig = require('./webpack.base');
 const LessPluginFunctions = require('less-plugin-functions');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const nodeExternals = require('webpack-node-externals');
 //预渲染
 // const PreRender = require('prerender-spa-plugin');
-
-// process.env.NODE_ENV = 'production';
 
 const config = webpackMerge(baseConfig, {
     mode: 'production',
@@ -23,16 +23,28 @@ const config = webpackMerge(baseConfig, {
     entry: {
         client: path.resolve(__dirname, "../client/build/buildSSR.js")
     },
+    externals: [
+        nodeExternals({
+            whitelist: /\.less$/,
+        })
+    ],
     module: {
         rules: [
             {
                 test: /\.css$/,
                 use: [
-                    'style-loader',
-                    // MiniCssExtractPlugin.loader,
-                    'css-loader',
+                    require.resolve('css-hot-loader'),
+                    MiniCssExtractPlugin.loader,
                     {
-                        loader: 'postcss-loader',
+                        loader: require.resolve('css-loader'),
+                        options: {
+                            importLoaders: 1,
+                            minimize: true,
+                            sourceMap: false
+                        }
+                    },
+                    {
+                        loader: require.resolve('postcss-loader'),
                         options: {
                             exec: true,
                             plugins: [
@@ -45,17 +57,24 @@ const config = webpackMerge(baseConfig, {
                                 })
                             ]
                         }
-                    },
+                    }
                 ]
             },
             {
                 test: /\.(scss|sass)$/,
                 use: [
-                    'style-loader',
-                    // MiniCssExtractPlugin.loader,
-                    'css-loader',
+                    require.resolve('css-hot-loader'),
+                    MiniCssExtractPlugin.loader,
                     {
-                        loader: 'postcss-loader',
+                        loader: require.resolve('css-loader'),
+                        options: {
+                            importLoaders: 1,
+                            minimize: true,
+                            sourceMap: false
+                        }
+                    },
+                    {
+                        loader: require.resolve('postcss-loader'),
                         options: {
                             exec: true,
                             plugins: [
@@ -69,17 +88,26 @@ const config = webpackMerge(baseConfig, {
                             ]
                         }
                     },
-                    'sass-loader'
+                    {
+                        loader: require.resolve('sass-loader')
+                    }
                 ]
             },
             {
                 test: /\.less$/,
                 use: [
-                    'style-loader',
-                    // MiniCssExtractPlugin.loader,
-                    "css-loader",
+                    // require.resolve('css-hot-loader'),
+                    MiniCssExtractPlugin.loader,
                     {
-                        loader: 'postcss-loader',
+                        loader: require.resolve('css-loader'),
+                        options: {
+                            importLoaders: 1,
+                            minimize: true,
+                            sourceMap: false
+                        }
+                    },
+                    {
+                        loader: require.resolve('postcss-loader'),
                         options: {
                             exec: true,
                             plugins: [
@@ -94,7 +122,7 @@ const config = webpackMerge(baseConfig, {
                         }
                     },
                     {
-                        loader:"less-loader",
+                        loader: require.resolve('less-loader'),
                         options: {
                             plugins: [
                                 new LessPluginFunctions()
@@ -128,15 +156,18 @@ const config = webpackMerge(baseConfig, {
     },
     plugins: [
         new webpack.NoEmitOnErrorsPlugin(),
-        // new MiniCssExtractPlugin({ // 在plugins中配置属性
-        //     filename: 'css/[name]-[contentHash].css', // 配置提取出来的css名称
-        //     chunkFilename: "css/chunk-[id].css"
-        // }),
+        new MiniCssExtractPlugin({ // 在plugins中配置属性
+            filename: 'css/[name]-[contentHash].css', // 配置提取出来的css名称
+            chunkFilename: "css/chunk-[id].css"
+        }),
         new webpack.DefinePlugin({
             'process.env':{
                 'NODE_ENV': JSON.stringify('production')
             },
         }),
+        new ExtractTextWebpackPlugin({
+            filename: '[name].css'
+        })
         // new PreRender({
         //     staticDir: path.join(__dirname,'dist'),
         //     routes: ['/']

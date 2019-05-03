@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "main.js",
   "scripts": {
-    "dev:server": "node ./server/index.js",
+    "dev:server": "nodemon ./server/index.js",
     "dev:client": "webpack-dev-server --config=./config/webpack.dev.js",
     "build:client": "webpack --config=./config/webpack.pro.js",
     "build:server": "webpack --config=./config/webpack.server.pro.js"
@@ -36,6 +36,7 @@
     "babel-plugin-import": "^1.11.0",
     "babel-plugin-transform-async-to-module-method": "^6.24.1",
     "clean-webpack-plugin": "^0.1.19",
+    "css-hot-loader": "^1.4.4",
     "css-loader": "^1.0.1",
     "eslint": "^5.12.0",
     "extract-loader": "^3.1.0",
@@ -67,7 +68,8 @@
     "webpack": "^4.3.0",
     "webpack-cli": "^3.2.1",
     "webpack-dev-server": "^3.1.14",
-    "webpack-merge": "^4.2.1"
+    "webpack-merge": "^4.2.1",
+    "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
     "antd": "^3.12.1",

@@ -1,4 +1,5 @@
 import React from 'react';
+import './styles.less';
 
 class Homepage extends React.Component{
     constructor(props){

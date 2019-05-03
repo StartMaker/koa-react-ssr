@@ -1,8 +1,7 @@
-
 const Koa = require('koa');
 const app = new Koa();
 const path = require('path');
-app.env = process.env.NODE_ENV;
+app.env = process.env.NODE_ENV||'development';
 
 if(app.env === 'development'){
     const KoaWebpack = require('koa-webpack');
