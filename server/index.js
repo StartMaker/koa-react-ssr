@@ -9,7 +9,7 @@ const router = new KoaRouter();
 //配置路由
 app.use(router.routes()).use(router.allowedMethods());
 //配置json
-app.use(KoaJson());
+app.use(KoaJson({pretty: true}));
 
 if(app.env === JSON.stringify('development')){
     const KoaWebpack = require('koa-webpack');

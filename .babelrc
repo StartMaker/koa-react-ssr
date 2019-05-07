@@ -1,0 +1,16 @@
+{
+  "presets": [
+    "@babel/preset-env","@babel/preset-react","@babel/preset-typescript"
+  ],
+  "plugins": [
+    ["@babel/plugin-transform-runtime",{"corejs": 2}],
+    "@babel/plugin-transform-object-assign",
+    ["@babel/plugin-proposal-decorators", { "legacy": true }],
+    ["@babel/plugin-proposal-class-properties",{
+      "loose": true
+    }],
+    "react-hot-loader/babel",
+    ["import", {"libraryName": "antd", "style": "css","libraryDirectory": "es"}],
+    "@babel/plugin-syntax-dynamic-import"
+  ]
+}

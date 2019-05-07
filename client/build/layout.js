@@ -1,8 +1,6 @@
 const createTemplate = require('./template');
 const bundle = require('../../dist/static/client');
 const ReactDOMRender = require('react-dom/server');
-// import createContent from '../../dist/static/client';
-console.log(bundle);
 
 module.exports.homepage = async (ctx) => {
     ctx.response.status = 200;

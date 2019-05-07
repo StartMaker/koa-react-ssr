@@ -3,9 +3,6 @@ const path = require('path');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = {
-    // output:{
-    //     path: path.resolve(__dirname, '../dist')
-    // },
     module: {
         rules: [
             {
@@ -13,36 +10,37 @@ module.exports = {
                 exclude: /node_modules/,
                 use: [
                     {
-                        loader:"babel-loader",
-                        options: {
-                            "presets": [
-                                "@babel/preset-env","@babel/preset-react","@babel/preset-typescript"
-                            ],
-                            "plugins": [
-                                ["@babel/plugin-transform-runtime",{"corejs": 2}],
-                                "@babel/plugin-transform-object-assign",
-                                ["@babel/plugin-proposal-decorators", { "legacy": true }],
-                                ["@babel/plugin-proposal-class-properties",{
-                                    "loose": true
-                                }],
-                                "react-hot-loader/babel",
-                                ["import", { "libraryName": "antd", "libraryDirectory": "lib"}, "ant"],
-                                ["import", { "libraryName": "ant-mobile", "libraryDirectory": "lib"}, "ant-mobile"],
-                                "@babel/plugin-syntax-dynamic-import",
-                                "dynamic-import-node"
-                            ]
-                        }
+                        loader:"babel-loader"
+                        // options: {
+                        //     "presets": [
+                        //         "@babel/preset-env","@babel/preset-react","@babel/preset-typescript"
+                        //     ],
+                        //     "plugins": [
+                        //         ["@babel/plugin-transform-runtime",{"corejs": 2}],
+                        //         "@babel/plugin-transform-object-assign",
+                        //         ["@babel/plugin-proposal-decorators", { "legacy": true }],
+                        //         ["@babel/plugin-proposal-class-properties",{
+                        //             "loose": true
+                        //         }],
+                        //         "react-hot-loader/babel",
+                        //         ["import", { "libraryName": "antd", "libraryDirectory": "lib", "styles": "css"}, "ant"],
+                        //         // ["import", { "libraryName": "ant-mobile", "libraryDirectory": "lib"}, "ant-mobile"],
+                        //         "@babel/plugin-syntax-dynamic-import"
+                        //     ]
+                        // }
                     },
                     "astroturf/loader"
                 ]
             },
             {
-                test: /\.(png|woff|woff2|svg|eot)($|\?)/i,
+                test: /\.(png|woff|woff2|svg|eot|jpg)($|\?)/i,
                 use: [
                     {
                         loader: 'url-loader',
                         options: {
-                            limit: 5000
+                            limit: 8192,
+                            mimetype:'image/png',
+                            name: 'images/[name].[hash:7].[ext]'
                         }
                     }
                     // {
@@ -54,14 +52,14 @@ module.exports = {
                     // }
                 ]
             },
-            {
-                test: /\.(png|svg|jpg|gif|ttf)$/,
-                use: [
-                    {
-                        loader: 'file-loader'
-                    }
-                ]
-            },
+            // {
+            //     test: /\.(png|svg|jpg|gif|ttf)$/,
+            //     use: [
+            //         {
+            //             loader: 'file-loader'
+            //         }
+            //     ]
+            // },
             {
                 test: /\.(ts|tsx)?$/,
                 include: path.resolve(__dirname, 'src'),
@@ -83,7 +81,7 @@ module.exports = {
         ]
     },
     resolve: {
-        extensions: [".js", ".jsx"]
+        extensions: [".js", ".json", ".jsx",".ts",".tsx"],
     },
     plugins: [
         new CleanWebpackPlugin(['dist'], {

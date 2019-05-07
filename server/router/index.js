@@ -2,7 +2,7 @@ const layout = require('../../client/build/layout');
 function createRouter(router){
     const route_list = [
         {
-            url: '/homepage',
+            url: '/homepage(/:id)',
             page: layout.homepage
         }
     ];
