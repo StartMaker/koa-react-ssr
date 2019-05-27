@@ -6,9 +6,11 @@ const {Header, Sider, Content, Footer} = Layout;
 
 import '../../static/styles/reset.less';
 import './styles.less';
-import MenuDrawer from '../../components/menuDrawer'
+import MenuDrawer from '../../components/menuDrawer';
+import Account from './account';
 import HeaderTitle from './header_title';
 import HeaderBody from './header_body';
+import ContentBody from './content_body';
 
 class Homepage extends React.Component{
     constructor(props){
@@ -18,12 +20,15 @@ class Homepage extends React.Component{
         return (
             <Layout className={'home'}>
                 <Header>
+                    <Account/>
                     <MenuDrawer active={'Home'}/>
                     <HeaderTitle/>
                     <HeaderBody/>
                 </Header>
                 <Layout>
-                    <Content></Content>
+                    <Content>
+                        <ContentBody/>
+                    </Content>
                 </Layout>
             </Layout>
         )

@@ -6,8 +6,6 @@ const baseConfig = require('./webpack.base');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const LessPluginFunctions = require('less-plugin-functions');
 
-// process.env.NODE_ENV = 'development';
-
 const  config = webpackMerge(baseConfig, {
     mode: 'development',
     output: {
@@ -79,7 +77,7 @@ const  config = webpackMerge(baseConfig, {
             },
         }),
         // new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoEmitOnErrorsPlugin()
+        // new webpack.NoEmitOnErrorsPlugin()
     ]
 });
 

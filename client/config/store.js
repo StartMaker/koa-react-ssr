@@ -4,11 +4,18 @@ import redux_thunk from 'redux-thunk';
 import redux_logger from 'redux-logger';
 
 import post from '../reducers/post';
+import account from '../reducers/account';
 
 const reducers = combineReducers({
-   post
+    account,
+    post
 });
 const init_state = {
+    account:{
+        username: null,
+        token: undefined,
+        login_status: false
+    },
     post: {}
 };
 

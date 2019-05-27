@@ -3,7 +3,7 @@
         return : unit(@px*320/@designWidth/20 , rem);
     }
 }
-@designWidth: 1600px;
+@designWidth: 750px;
 .home {
     .ant-layout-header{
         padding-top: 40px;
@@ -44,26 +44,26 @@
             h2{
                 font-family:  'Ink Free';
                 color: rgb(107, 143, 168);
-                font-size: 75px;
+                font-size: 200%;
             }
             h5{
                 color: #999;
                 font-weight: 100;
                 font-family: 'Ink Free';
-                font-size: 20px;
+                font-size: 40%;
             }
         }
         .header_body{
             display: inline-block;
 
             @media screen and (min-width: 769px){
-                margin-top: 100px;
+                margin-top: 60px;
             }
             @media screen and (min-width: 992px){
-                margin-top: 125px;
+                margin-top: 100px;
             }
             @media screen and (min-width: 1080px){
-                margin-top: 150px;
+                margin-top: 120px;
             }
             @media screen and (min-width: 1280px){
                 margin-top: 175px;
@@ -73,9 +73,8 @@
             }
 
             h2{
-                font-size: 38px;
+                font-size: 80%;
                 font-family: 'Ink Free';
-                display: inline-block;
                 padding: 15px 35px;
                 //padding: 10px;
                 margin-bottom: 20px;
@@ -83,27 +82,63 @@
                 color: #ffffff;
             }
             h5{
-                width: 630px;
+                width: 100%;
+                padding-left: 7.5%;
+                padding-right: 7.5%;
                 margin-left: auto;
                 margin-right: auto;
                 line-height: 1.4;
-                margin-bottom: 40px;
+                margin-bottom: 20px;
                 color: #ffffff;
-                font-size: 20px;
+                font-size: 35%;
                 font-family: 'Malgun Gothic Semilight';
                 font-weight: normal;
             }
-            a{
+            .read_more{
                 font-family: "Ink Free";
                 background-color: rgb(235, 111, 99);
                 color: #ffffff;
-                font-size: 25px;
+                font-size: 35%;
+                line-height: 1.0;
                 padding: 8px 40px;
                 border-radius: 40px;
                 margin-bottom: 100px;
-                
-                &:hover{
-                    text-decoration: none;
+            }
+            .contract_list{
+                li{
+                    display: inline-block;
+
+                    & + li{
+                        margin-left: 15px;
+                    }
+
+                    a{
+                        font-size: 40%;
+                        border-radius: 20px;
+                        display: block;
+                        border: 2px solid whitesmoke;
+                        padding: 10px;
+                        line-height: 1.0;
+                        color: white;
+                        transition: 0.5s;
+
+                        &:hover{
+                            background-color: rgb(235, 111, 150);
+                            border-color: rgb(235, 111, 150);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .ant-layout-content{
+        section{
+            div{
+                outline: 1px solid black;
+                background-color: orange;
+
+                img{
+                    max-width: 100%;
                 }
             }
         }

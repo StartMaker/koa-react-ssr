@@ -1,8 +1,8 @@
 const layout = require('../../client/build/layout');
-function createRouter(router){
+function set_static_routers(router){
     const route_list = [
         {
-            url: '/homepage(/:id)',
+            url: '/page/homepage(/:id)',
             page: layout.homepage
         }
     ];
@@ -11,4 +11,4 @@ function createRouter(router){
     });
 }
 
-module.exports = createRouter;
+module.exports = {set_static_routers};

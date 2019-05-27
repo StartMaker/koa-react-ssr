@@ -11,23 +11,6 @@ module.exports = {
                 use: [
                     {
                         loader:"babel-loader"
-                        // options: {
-                        //     "presets": [
-                        //         "@babel/preset-env","@babel/preset-react","@babel/preset-typescript"
-                        //     ],
-                        //     "plugins": [
-                        //         ["@babel/plugin-transform-runtime",{"corejs": 2}],
-                        //         "@babel/plugin-transform-object-assign",
-                        //         ["@babel/plugin-proposal-decorators", { "legacy": true }],
-                        //         ["@babel/plugin-proposal-class-properties",{
-                        //             "loose": true
-                        //         }],
-                        //         "react-hot-loader/babel",
-                        //         ["import", { "libraryName": "antd", "libraryDirectory": "lib", "styles": "css"}, "ant"],
-                        //         // ["import", { "libraryName": "ant-mobile", "libraryDirectory": "lib"}, "ant-mobile"],
-                        //         "@babel/plugin-syntax-dynamic-import"
-                        //     ]
-                        // }
                     },
                     "astroturf/loader"
                 ]

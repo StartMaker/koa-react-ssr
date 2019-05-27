@@ -59,7 +59,6 @@ class MyDrawer extends React.Component{
                 <Drawer title={'Menu'} visible={visible} key={2} closable={false} onClose={close} className={'home-drawer'}>
                     {
                         menu.map((item,index) => {
-                            console.log(item.text === active);
                             let className = item.text === active ? 'active':'';
                             return (
                                 <div className={className} key={index}>

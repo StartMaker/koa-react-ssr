@@ -12,8 +12,8 @@ class App extends React.Component{
     render(){
         return (
             [
-                <Route path={'/homepage'} component={Homepage} key={1} exact/>,
-                <Route path={'/homepage/:id'} component={Homepage} key={2}/>
+                <Route path={'/page/homepage'} component={Homepage} key={1} exact/>,
+                <Route path={'/page/homepage/:id'} component={Homepage} key={2}/>
             ]
         )
     }
