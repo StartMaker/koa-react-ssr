@@ -7,7 +7,9 @@ const blog = {
     del: "DELETE",
     add: "ADD",
     compile: "COMPILE",
-    search: "SEARCH"
+    search: "SEARCH",
+    display_owner: "DISPLAY_OWNER",
+    display: "DISPLAY"
 };
 
 const remake = {

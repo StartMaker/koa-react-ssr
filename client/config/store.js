@@ -3,12 +3,12 @@ import {createStore,applyMiddleware} from "redux";
 import redux_thunk from 'redux-thunk';
 import redux_logger from 'redux-logger';
 
-import post from '../reducers/post';
+import blog from '../reducers/blogs';
 import account from '../reducers/account';
 
 const reducers = combineReducers({
     account,
-    post
+    blog
 });
 const init_state = {
     account:{
@@ -16,7 +16,9 @@ const init_state = {
         token: undefined,
         login_status: false
     },
-    post: {}
+    blog: {
+        content: []
+    }
 };
 
 export default createStore(

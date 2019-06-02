@@ -8,7 +8,16 @@ module.exports = (app) => {
     app.use(router.routes()).use(router.allowedMethods());
     //静态资源加载
     const config = require('../../config/webpack.dev');
-    koa_webpack({config})
+    koa_webpack({
+        config: config,
+        devMiddleware: {
+            publicPath: '/',
+            logLevel: 'silent'
+        },
+        hotClient: {
+            logLevel: 'silent'
+        }
+    })
         .then(middleware => {
             app.use(middleware);
             app.use(async ctx => {

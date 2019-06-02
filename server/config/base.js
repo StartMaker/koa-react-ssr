@@ -1,10 +1,11 @@
-// const {set_static_routers} = require('../router');
-
 module.exports = (app) => {
     app.env = JSON.stringify(process.env.NODE_ENV);
     //json
     const koa_json = require('koa-json');
     app.use(koa_json({pretty: true}));
+    //post body
+    const koa_bodyparser = require('koa-bodyparser');
+    app.use(koa_bodyparser());
     //session
     const koa_session = require('koa-session-redis3');
     app.keys = ['Wjolliosjoi'];
