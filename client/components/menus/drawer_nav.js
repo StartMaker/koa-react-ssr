@@ -29,8 +29,8 @@ class NavMenu extends React.Component{
         const {open_drawer, close_drawer} = this;
         return (
             [
-                <Button className={'nav_menu'} onClick={open_drawer} key={1}>
-                    <Icon type="menu"/>菜单
+                <Button onClick={open_drawer} key={1}>
+                    <Icon type="menu" className={'menu'}/>
                 </Button>,
                 <Drawer visible={drawer.visible} key={2} closable={true} placement={'left'} onClose={close_drawer}>
                     <p>技术文档</p>

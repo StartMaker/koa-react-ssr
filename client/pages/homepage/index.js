@@ -15,8 +15,8 @@ class Homepage extends React.Component{
     }
     render(){
         return (
-            <Layout className={'home'}>
-                <Header>
+            <Layout id={'home'}>
+                <Header className={'clearfix'}>
                     <Nav/>
                 </Header>
                 <Layout>

@@ -23,27 +23,21 @@ class Article extends React.Component {
 
     render() {
         let {current_page} = this.state;
-        console.log('sss');
         let {blog} = this.props;
-        console.log(blog);
         return (
-            <div className={'container'}>
+            <div className={'container clearfix'}>
                 <Menu mode="horizontal" selectedKeys={current_page}>
                     <Menu.Item key={'all_user'}>
                         <Icon type={'user'}/>
-                        动态
                     </Menu.Item>
                     <Menu.Item key={'wode'}>
                         <Icon type={'lock'}/>
-                        option
                     </Menu.Item>
                     <Menu.Item key={'lll'}>
                         <Icon type={'lock'}/>
-                        option
                     </Menu.Item>
                     <Menu.Item key={'uuu'}>
                         <Icon type={'lock'}/>
-                        option
                     </Menu.Item>
                 </Menu>
                 <Blogs_Column sourse={blog.content}/>

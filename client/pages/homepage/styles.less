@@ -3,103 +3,83 @@
         return : unit(@px*320/@designWidth/20 , rem);
     }
 }
-@designWidth: 750px;
+@designWidth: 750;
 
-.home {
-    .ant-layout-header {
-        display: flex;
+#home{
+    font-size: 0;
+
+    &>.ant-layout-header{
         height: auto;
-        justify-content: space-between;
-        z-index: 1001;
-        padding-left: px2rem(50);
-        padding-right: px2rem(50);
+        line-height: 4;
+        padding-right: 15px;
+        padding-left: 15px;
 
-        .right_nav{
-            display: flex;
-            align-items: center;
-            line-height: 2.5;
-        }
-        .left_nav{
-            display: flex;
-            align-items: center;
-            line-height: 2.5;
-        }
-        .ant-btn{
-            border: none;
-            background-color: transparent;
-            font-size: 30%;
-            color: #ffffff;
-            padding-right: 0;
-            padding-left: 0;
-        }
-        .ant-divider{
-            height: px2rem(10);
-            background-color: dimgray;
-        }
-        span{
-            color: #ffffff;
-            padding-right: 0;
-            padding-left: 0;
-            font-size: 30%;
-        }
-    }
-    .ant-layout-content{
-        .blog_column{
-            display: flex;
-            flex-wrap: wrap;
-            margin-left: -15px;
-            margin-right: -15px;
+        &>div{
+            float: left;
 
-            .ant-card{
-                margin: 15px;
-                flex-shrink: 0;
-                flex-grow: 0;
-                width: 284px;
-                height: 148px;
+            .ant-btn{
+                height: auto;
+                font-size: px2rem(14);
+                color: #ffffff;
+                background: transparent;
+                border: none;
+                outline: none;
+                padding-left: 0;
+                padding-right: 0;
+
+                .menu{
+                    &:after{
+                        content: '菜单';
+                        vertical-align: middle;
+                        margin-left: 6px;
+                    }
+                }
+            }
+            .ant-divider{
+                height: px2rem(14);
+                min-height: 12px;
+                top: -0.125em;
+            }
+            span{
+                font-size: px2rem(14);
+                color: #ffffff;
+                vertical-align: -0.125em;
             }
         }
-    }
-}
-.ant-modal{
-    font-size: 100% !important;
-    width: 400px !important;
-    
-    .ant-modal-close{
-        right: px2rem(-30);
-        width: auto;
-
-        span{
-            line-height: 1.0;
-            font-size: 30%;
-            color: #ffffff;
-        }
-        .ant-modal-close-x{
-            width: auto;
+        &>div+div{
+            float: right;
         }
     }
-    .ant-modal-body{
-        padding-right: 50px;
-        padding-left: 50px;
+    &>.ant-layout>.ant-layout-content{
 
-        .ant-form{
-            .ant-form-item{
-                margin-bottom: 15px;
+        .ant-menu{
+            &>li:after{
+                content: '动态';
+                vertical-align: -0.18em;
+            }
+        }
+        #article{
+            display: flex;
+            
+            #article_column{
+                flex-basis: 80%;
+                flex-grow: 1;
 
-                &:first-child{
-                    font-size: 150%;
-                    text-align: center;
-                    margin-bottom: 45px;
+                .ant-card{
+                    width: 100%;
+
+                    h5{
+                        font-size: px2rem(16);
+                        margin-bottom: 0.4rem;
+                    }
                 }
-                .login-form-forgot{
-                    float: right;
+            }
+            #recommend_column{
+                flex-basis: 20%;
+                @media screen and (max-width: 1000px){
+                    display: none;
                 }
             }
         }
-    }
-}
-.ant-drawer{
-    .ant-drawer-content{
-        box-sizing: border-box;
-        padding-top: 85px;
     }
 }

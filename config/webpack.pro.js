@@ -167,9 +167,9 @@ const config = webpackMerge(baseConfig, {
                 'NODE_ENV': JSON.stringify('production')
             },
         }),
-        new ExtractTextWebpackPlugin({
-            filename: '[name].css'
-        })
+        // new ExtractTextWebpackPlugin({
+        //     filename: '[name].css'
+        // })
         // new PreRender({
         //     staticDir: path.join(__dirname,'dist'),
         //     routes: ['/']

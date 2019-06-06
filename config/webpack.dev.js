@@ -18,7 +18,7 @@ const  config = webpackMerge(baseConfig, {
     // devServer: {
     //     contentBase: path.join(__dirname, 'dist'),
     //     hot: true,
-    //     // host: '10.20.0.72',
+    //     host: '172.20.10.2',
     //     progress: true,
     //     inline: true,
     //     port: 3000,

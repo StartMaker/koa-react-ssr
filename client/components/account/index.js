@@ -1,5 +1,5 @@
 import React from 'react';
-import {Icon} from "antd";
+import {Button, Icon} from "antd";
 import {connect} from "react-redux";
 
 import IconFont from '../../static/icons';
@@ -18,7 +18,11 @@ class Index extends React.Component{
         switch (account.login_status) {
             case true:
                 return (
-                    <span><IconFont type={'icon-unlogin'}/>{account.username}</span>
+
+                    <Button>
+                        <IconFont type="icon-unlogin"/>
+                        <span>{account.username}</span>
+                    </Button>
                 );
             case false:
                 return (

@@ -11,12 +11,12 @@ class Nav extends React.Component{
     render(){
         return (
             [
-                <div className={'left_nav'} key={1}>
+                <div key={1}>
                     <NavMenu/>
                     <Divider type={'vertical'}/>
                     <span>logo</span>
                 </div>,
-                <div className={'right_nav'} key={2}>
+                <div key={2}>
                     <Account/>
                     <Divider type={'vertical'}/>
                     <span>首页</span>
