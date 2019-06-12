@@ -66,7 +66,7 @@ const  config = webpackMerge(baseConfig, {
         new HtmlWebpackPlugin({
             template: "./client/index.html",
             inject: true,
-            // favicon: './src/App/static/image/theme.jpg',
+            favicon: './client/static/image/logo.jpg',
             filename: "index.html",
             hash: true
             // loading: loading

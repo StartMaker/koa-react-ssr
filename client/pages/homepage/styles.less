@@ -13,6 +13,7 @@
         line-height: 4;
         padding-right: 15px;
         padding-left: 15px;
+        z-index: 1001;
 
         &>div{
             float: left;
@@ -53,24 +54,70 @@
     &>.ant-layout>.ant-layout-content{
 
         .ant-menu{
-            &>li:after{
-                content: '动态';
-                vertical-align: -0.18em;
+
+            &>li{
+                margin-right: px2rem(30);
+                padding-left: px2rem(10);
+                padding-right: px2rem(10);
+            }
+            &>li:nth-child(2):after{
+                content: '博客动态';
+                vertical-align: -0.3em;
+            }
+            &>li:nth-child(4):after{
+                content: '博客动态';
+                vertical-align: -0.3em;
+            }
+            &>li:nth-child(6):after{
+                content: '博客动态';
+                vertical-align: -0.3em;
+            }
+            &>li:nth-child(8):after{
+                content: '博客动态';
+                vertical-align: -0.3em;
             }
         }
         #article{
             display: flex;
-            
+
             #article_column{
                 flex-basis: 80%;
                 flex-grow: 1;
+                user-select: none;
 
+                a{
+                    text-decoration: none;
+                }
                 .ant-card{
                     width: 100%;
 
                     h5{
                         font-size: px2rem(16);
                         margin-bottom: 0.4rem;
+
+                        &>span{
+                            font-size: px2rem(12);
+                            padding-left: 3px;
+                            padding-right: 3px;
+                            border: 1px solid #FF7800;
+                            color: #FF7800;
+                            margin-right: 10px;
+                        }
+                    }
+                    p{
+                        margin-bottom: 0.4rem;
+
+                        &>span{
+                            vertical-align: -0.125em;
+                            margin-left: 5px;
+                        }
+                        &>span+span{
+                            margin-left: 15px;
+                            opacity: 0.8;
+                        }
+                    }
+                    p+p{
+                        margin-bottom: 0;
                     }
                 }
             }
@@ -82,4 +129,11 @@
             }
         }
     }
+}
+.loading{
+    width: 100%;
+    padding-top: 2.5%;
+    padding-bottom: 2.5%;
+    text-align: center;
+    background-color: rgba(0,0,0,0.05);
 }

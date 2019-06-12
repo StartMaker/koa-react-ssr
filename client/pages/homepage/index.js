@@ -13,9 +13,13 @@ class Homepage extends React.Component{
     constructor(props){
         super(props);
     }
+    scroll = (ev) => {
+        console.log(ev);
+    };
     render(){
+        const {scroll} = this;
         return (
-            <Layout id={'home'}>
+            <Layout id={'home'} onScroll={scroll}>
                 <Header className={'clearfix'}>
                     <Nav/>
                 </Header>

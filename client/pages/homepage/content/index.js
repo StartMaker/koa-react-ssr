@@ -3,9 +3,9 @@ import {connect} from "react-redux";
 import {Icon, Menu} from "antd";
 
 import {blog_display} from "../../../actions/blogs";
-import Blogs_Column from './blogs_column';
+import Article from './article';
 
-class Article extends React.Component {
+class Content extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -13,9 +13,8 @@ class Article extends React.Component {
         }
     }
     componentWillMount() {
-        console.log(this);
-        const {init} = this.props;
-        init();
+        const {dispatch} = this.props;
+        dispatch(blog_display(1,''));
     }
     componentDidUpdate(prevProps, prevState, snapshot) {
 
@@ -23,7 +22,6 @@ class Article extends React.Component {
 
     render() {
         let {current_page} = this.state;
-        let {blog} = this.props;
         return (
             <div className={'container clearfix'}>
                 <Menu mode="horizontal" selectedKeys={current_page}>
@@ -40,24 +38,10 @@ class Article extends React.Component {
                         <Icon type={'lock'}/>
                     </Menu.Item>
                 </Menu>
-                <Blogs_Column sourse={blog.content}/>
+                <Article/>
             </div>
         )
     }
 }
 
-const mapStateToProps = (state) => {
-    return state;
-};
-const mapDispatchToProps = (dispatch) => {
-    return {
-        init: function () {
-            dispatch(blog_display(1,''));
-        }
-    }
-};
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(Article);
+export default connect()(Content);

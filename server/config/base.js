@@ -3,6 +3,11 @@ module.exports = (app) => {
     //json
     const koa_json = require('koa-json');
     app.use(koa_json({pretty: true}));
+    //gzip压缩
+    const koa_compress = require('koa-compress');
+    app.use(koa_compress({
+        threshold: 1024
+    }));
     //post body
     const koa_bodyparser = require('koa-bodyparser');
     app.use(koa_bodyparser());
