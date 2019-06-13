@@ -6,18 +6,44 @@ const categories = [
     '文章'
 ];
 
-import IconFont from '../../../static/icons'
+import IconFont from '../../../static/icons';
+import Loading from '../../../components/loading';
+import {blog_more} from "../../../actions/blogs";
 
-class Blogs_Column extends React.Component {
+class Columns extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            visible: false
+        }
     }
     componentDidMount() {
         console.log(this);
+        const {scroll} = this;
+        window.addEventListener('scroll', scroll);
     }
+    componentWillUnmount() {
+        const {scroll} = this;
+        window.removeEventListener('scroll',scroll);
+    }
+
+    scroll = (ev) => {
+        const clientHeight = ev.target.scrollingElement.clientHeight;
+        const scrollHeight = ev.target.scrollingElement.scrollHeight;
+        const scrollTop = ev.target.scrollingElement.scrollTop;
+        if(scrollHeight === scrollTop + clientHeight){
+            const {blog_more} = this.props;
+            this.setState({
+                visible: true
+            },function () {
+                blog_more();
+            });
+        }
+    };
 
     render() {
         const {content} = this.props;
+        const {visible} = this.state;
         return (
             <div id={'article_column'} key={1}>
                 {
@@ -42,6 +68,7 @@ class Blogs_Column extends React.Component {
                         )
                     })
                 }
+                <Loading visible={visible}/>
             </div>
         )
     }
@@ -52,6 +79,15 @@ const mapStateToProps = (state) => {
     return {content};
 };
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        blog_more: () => {
+            dispatch(blog_more())
+        }
+    }
+};
+
 export default connect(
-    mapStateToProps
-)(Blogs_Column);
+    mapStateToProps,
+    mapDispatchToProps
+)(Columns);

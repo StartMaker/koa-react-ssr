@@ -4,6 +4,7 @@ import {Route} from 'react-router-dom';
 import 'hotcss/src/hotcss';
 
 import Homepage from './pages/homepage';
+import {Provider} from './config/context';
 
 class App extends React.Component{
     constructor(props){
@@ -11,10 +12,10 @@ class App extends React.Component{
     }
     render(){
         return (
-            [
-                <Route path={'/page/homepage'} component={Homepage} key={1} exact/>,
+            <Provider>
+                <Route path={'/page/homepage'} component={Homepage} key={1} exact/>
                 <Route path={'/page/homepage/:id'} component={Homepage} key={2}/>
-            ]
+            </Provider>
         )
     }
 }

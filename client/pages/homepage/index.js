@@ -1,8 +1,7 @@
 import React,{lazy} from 'react';
-import {Route, Switch, Link} from "react-router-dom";
-import {Layout,Button, Icon, Drawer} from "antd";
+import {Layout} from "antd";
 
-const {Header, Content, Footer} = Layout;
+const {Header, Content} = Layout;
 
 import '../../static/styles/reset.less';
 import './styles.less';
@@ -13,13 +12,9 @@ class Homepage extends React.Component{
     constructor(props){
         super(props);
     }
-    scroll = (ev) => {
-        console.log(ev);
-    };
     render(){
-        const {scroll} = this;
         return (
-            <Layout id={'home'} onScroll={scroll}>
+            <Layout id={'home'}>
                 <Header className={'clearfix'}>
                     <Nav/>
                 </Header>

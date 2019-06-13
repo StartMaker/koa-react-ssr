@@ -9,11 +9,12 @@ class Loading extends React.Component {
     }
 
     render() {
+        const {visible} = this.props;
         return (
-            <div className={'loading'}>
-                <Spin indicator={loading}/>
-            </div>
-
+            visible === false? null:
+                <div className={'loading'}>
+                    <Spin indicator={loading}/>
+                </div>
         )
     }
 }

@@ -61,7 +61,7 @@
                 padding-right: px2rem(10);
             }
             &>li:nth-child(2):after{
-                content: '博客动态';
+                content: '全部动态';
                 vertical-align: -0.3em;
             }
             &>li:nth-child(4):after{
@@ -69,11 +69,11 @@
                 vertical-align: -0.3em;
             }
             &>li:nth-child(6):after{
-                content: '博客动态';
+                content: '技术文档';
                 vertical-align: -0.3em;
             }
             &>li:nth-child(8):after{
-                content: '博客动态';
+                content: '小事记';
                 vertical-align: -0.3em;
             }
         }
@@ -81,7 +81,7 @@
             display: flex;
 
             #article_column{
-                flex-basis: 80%;
+                flex-basis: 100%;
                 flex-grow: 1;
                 user-select: none;
 
@@ -94,6 +94,12 @@
                     h5{
                         font-size: px2rem(16);
                         margin-bottom: 0.4rem;
+                        float: left;
+                        max-width: 25em;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        padding-bottom: 1px;
 
                         &>span{
                             font-size: px2rem(12);
@@ -106,27 +112,41 @@
                     }
                     p{
                         margin-bottom: 0.4rem;
+                        float: right;
 
                         &>span{
-                            vertical-align: -0.125em;
+                            vertical-align: -0.19em;
                             margin-left: 5px;
+                            font-variant: all-petite-caps;
                         }
                         &>span+span{
                             margin-left: 15px;
                             opacity: 0.8;
+                            font-size: 20%;
+                            vertical-align: bottom;
                         }
                     }
                     p+p{
                         margin-bottom: 0;
+                        float: left;
+                        clear: both;
+                        height: 4.8em;
+                        text-overflow: ellipsis;
+                        -webkit-box-orient:vertical;
+                        display: -webkit-box;
+                        -webkit-line-clamp:3;
+                        overflow: hidden;
+                        word-break: break-all;
+                        width: 100%;
                     }
                 }
             }
-            #recommend_column{
-                flex-basis: 20%;
-                @media screen and (max-width: 1000px){
-                    display: none;
-                }
-            }
+            //#recommend_column{
+            //    flex-basis: 20%;
+            //    @media screen and (max-width: 1000px){
+            //        display: none;
+            //    }
+            //}
         }
     }
 }
@@ -137,3 +157,10 @@
     text-align: center;
     background-color: rgba(0,0,0,0.05);
 }
+.ant-drawer{
+    //padding-top: px2rem(64);
+}
+//#article_column{
+//    overflow: scroll !important;
+//    height: 200px;
+//}

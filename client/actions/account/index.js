@@ -8,3 +8,7 @@ export const login = (username, password) =>async dispatch => {
         response_data: data
     });
 };
+
+export const register = (username, password) => async dispatch => {
+
+};

@@ -16,11 +16,19 @@ const req = {
         return axios.post(path, obj);
     },
     get: (path, obj) => {
-        let req_data = "";
-        Object.keys(obj).forEach(item => {
-            req_data = req_data + item + "=" + obj[item]
-        });
-        return axios.get(path + "?" + req_data);
+        console.log(obj);
+        switch (obj) {
+            case null:
+                return axios.get(path);
+            case undefined:
+                return axios.get(path);
+            default:
+                let req_data = "";
+                Object.keys(obj).forEach(item => {
+                    req_data = req_data + item + "=" + obj[item]
+                });
+                return axios.get(path + "?" + req_data);
+        }
     }
 };
 

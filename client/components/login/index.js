@@ -82,7 +82,7 @@ class Index extends React.Component {
                             </a>
                         </Form.Item>
                         <Form.Item>
-                            <Button type="primary" htmlType="button" block={true} onClick={login}>
+                            <Button type="primary" block={true} onClick={login}>
                                 Log in
                             </Button>
                         </Form.Item>

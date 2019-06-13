@@ -1,6 +1,6 @@
 import React, {lazy, Suspense} from 'react';
 
-const Blogs_Column = lazy(() => import('./blogs_column'));
+const Columns = lazy(() => import('./columns'));
 import Recommend_Column from './recommend_column';
 import Loading from '../../../components/loading';
 
@@ -21,7 +21,7 @@ class Index extends React.Component {
         return (
             <div id={'article'}>
                 <Suspense fallback={create_loading('article_column')}>
-                    <Blogs_Column/>
+                    <Columns/>
                 </Suspense>
                 <Recommend_Column/>
             </div>

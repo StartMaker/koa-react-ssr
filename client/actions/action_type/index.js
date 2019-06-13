@@ -8,7 +8,7 @@ const blog = {
     add: "ADD",
     compile: "COMPILE",
     search: "SEARCH",
-    display_owner: "DISPLAY_OWNER",
+    more: "DISPLAY_MORE",
     display: "DISPLAY"
 };
 
