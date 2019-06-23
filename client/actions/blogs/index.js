@@ -1,6 +1,10 @@
 import req from '../async_config';
 import {blog} from "../action_type";
 
+//博客逻辑操作
+/*
+*博客展示
+* */
 export const blog_display = () => async dispatch => {
     let {data, status, statusText} = await req.get('/api/blog/display');
     console.log(dispatch);
@@ -13,6 +17,9 @@ export const blog_display = () => async dispatch => {
     });
 };
 
+/*
+* 博客更多项
+* */
 export const blog_more = () => async (dispatch, getState) => {
     let {blog:{page}} = getState();
     page++;

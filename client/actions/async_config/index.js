@@ -1,16 +1,19 @@
 import axios from 'axios';
 import url from '../../url';
 
-axios.defaults = {
-    baseURL: url,
-    headers: {
-        common: {
-            Authorization: sessionStorage.getItem('Authorization')
-        }
-    },
-    timeout: 5000
-};
+//axios全局配置
+axios.interceptors.request.use(function (config) {
+    config.headers = {
+        'Accept': "application/json, text/plain, */*",
+        'Content-Type': "application/json;charset=utf-8",
+        'Authorization': sessionStorage.getItem('Authorization')
+    };
+    config.timeout = 5000;
+    config.baseURL = url;
+    return config;
+});
 
+//get、post请求封装
 const req = {
     post: (path, obj) =>{
         return axios.post(path, obj);

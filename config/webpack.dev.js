@@ -12,18 +12,18 @@ const  config = webpackMerge(baseConfig, {
         publicPath: "/",
         filename: '[name].js',
         path: path.join(__dirname, './dist'),
-        libraryTarget: 'var',
-        library: 'MyClient'
+        libraryTarget: 'var'
     },
-    // devServer: {
-    //     contentBase: path.join(__dirname, 'dist'),
-    //     hot: true,
-    //     host: '172.20.10.2',
-    //     progress: true,
-    //     inline: true,
-    //     port: 3000,
-    //     compress: true
-    // },
+    devServer: {
+        contentBase: path.join(__dirname, 'dist'),
+        hot: true,
+        // host: '172.20.10.2',
+        progress: true,
+        inline: true,
+        port: 3000,
+        compress: true,
+        historyApiFallback: true
+    },
     entry: {
         client: [path.resolve(__dirname, "../client/build/devSSR.js")]
     },

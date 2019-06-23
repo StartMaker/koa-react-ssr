@@ -9,7 +9,7 @@ const mysql = MYSQL.createPool({
     database: 'blog'
 });
 
-function run_sql(sql) {
+function runSql(sql) {
     return new Promise(function (resolve, reject) {
         mysql.getConnection(function (err, connection) {
             if(err){
@@ -30,4 +30,4 @@ function run_sql(sql) {
     })
 }
 
-module.exports = {run_sql};
+module.exports = {runSql};

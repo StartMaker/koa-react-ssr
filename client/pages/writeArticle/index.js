@@ -1,24 +1,29 @@
-import React,{lazy} from 'react';
-import {Layout} from "antd";
+import React from 'react';
+import {Layout} from 'antd';
 
 const {Header, Content} = Layout;
 
 import Nav from '../../components/nav';
-import ArticleContent from './content';
+import Editor from '../../components/editor';
 
-class Homepage extends React.Component{
-    constructor(props){
+class WriteArticle extends React.Component {
+    constructor(props) {
         super(props);
     }
-    render(){
+    componentDidMount() {
+        // console.log(ReactQuill);
+    }
+
+    render() {
         return (
-            <Layout id={'home'}>
+            <Layout id={'writeArticle'}>
                 <Header className={'clearfix'}>
                     <Nav/>
                 </Header>
                 <Layout>
                     <Content>
-                        <ArticleContent/>
+
+                        <Editor/>
                     </Content>
                 </Layout>
             </Layout>
@@ -26,4 +31,4 @@ class Homepage extends React.Component{
     }
 }
 
-export default Homepage;
+export default WriteArticle;

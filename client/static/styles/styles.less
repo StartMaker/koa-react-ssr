@@ -5,52 +5,10 @@
 }
 @designWidth: 750;
 
+/*主页的style.less*/
 #home{
     font-size: 0;
 
-    &>.ant-layout-header{
-        height: auto;
-        line-height: 4;
-        padding-right: 15px;
-        padding-left: 15px;
-        z-index: 1001;
-
-        &>div{
-            float: left;
-
-            .ant-btn{
-                height: auto;
-                font-size: px2rem(14);
-                color: #ffffff;
-                background: transparent;
-                border: none;
-                outline: none;
-                padding-left: 0;
-                padding-right: 0;
-
-                .menu{
-                    &:after{
-                        content: '菜单';
-                        vertical-align: middle;
-                        margin-left: 6px;
-                    }
-                }
-            }
-            .ant-divider{
-                height: px2rem(14);
-                min-height: 12px;
-                top: -0.125em;
-            }
-            span{
-                font-size: px2rem(14);
-                color: #ffffff;
-                vertical-align: -0.125em;
-            }
-        }
-        &>div+div{
-            float: right;
-        }
-    }
     &>.ant-layout>.ant-layout-content{
 
         .ant-menu{
@@ -150,6 +108,47 @@
         }
     }
 }
+
+/*文本编辑页面的style.less*/
+#writeArticle{
+    font-size: 0;
+    height: 100%;
+
+    &>.ant-layout{
+        height: calc(100% - px2rem(56));
+    }
+    &>.ant-layout>.ant-layout-content{
+        height: 100%;
+
+        .input-title{
+            height: px2rem(60);
+
+            input{
+                width: 100%;
+                height: 100%;
+                font-size: px2rem(30);
+                border: none;
+                outline: none;
+                text-indent: 0.5em;
+                //color: #FF7800;
+                //caret-color: #FF7800;
+            }
+        }
+        .quill{
+            height: 100%;
+
+            .ql-toolbar{
+                height: px2rem(42);
+            }
+            .ql-container{
+                height: calc(100% - px2rem(42));
+            }
+        }
+    }
+}
+/*
+loading组件的样式
+*/
 .loading{
     width: 100%;
     padding-top: 2.5%;
@@ -160,7 +159,53 @@
 .ant-drawer{
     //padding-top: px2rem(64);
 }
-//#article_column{
-//    overflow: scroll !important;
-//    height: 200px;
-//}
+/*
+nav style.less
+*/
+.ant-layout{
+    font-size: 0;
+
+    &>.ant-layout-header{
+        height: auto;
+        line-height: 4;
+        padding-right: 15px;
+        padding-left: 15px;
+        z-index: 1001;
+
+        &>div{
+            float: left;
+
+            .ant-btn{
+                height: auto;
+                font-size: px2rem(14);
+                color: #ffffff;
+                background: transparent;
+                border: none;
+                outline: none;
+                padding-left: 0;
+                padding-right: 0;
+
+                .menu{
+                    &:after{
+                        content: '菜单';
+                        vertical-align: middle;
+                        margin-left: 6px;
+                    }
+                }
+            }
+            .ant-divider{
+                height: px2rem(14);
+                min-height: 12px;
+                top: -0.125em;
+            }
+            span{
+                font-size: px2rem(14);
+                color: #ffffff;
+                vertical-align: -0.125em;
+            }
+        }
+        &>div+div{
+            float: right;
+        }
+    }
+}

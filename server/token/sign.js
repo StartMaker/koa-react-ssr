@@ -6,4 +6,5 @@ module.exports = function (obj) {
     const token = jwt.sign({
         ...obj
     },key,{expiresIn: '15 days'});
+    return token;
 };

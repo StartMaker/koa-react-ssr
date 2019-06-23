@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 
 import {login} from '../../actions/account';
 import {ControlInput} from '../input';
+import {loginForAuthorization} from "../../actions/account";
 
 class Index extends React.Component {
     constructor(props) {
@@ -48,6 +49,11 @@ class Index extends React.Component {
             message.info(account.msg);
         }
     }
+    componentDidMount() {
+        const {loginForAuthorization} = this.props;
+        loginForAuthorization();
+    }
+
     render() {
         const {open_modal, close_modal, login} = this;
         let {modal} = this.state;
@@ -101,6 +107,9 @@ const mapDispatchToProps = dispatch => {
     return {
         login: function (username, password) {
             dispatch(login(username,password));
+        },
+        loginForAuthorization: function () {
+            dispatch(loginForAuthorization());
         }
     }
 };
