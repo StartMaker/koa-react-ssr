@@ -77,7 +77,7 @@ const  config = webpackMerge(baseConfig, {
             },
         }),
         // new webpack.HotModuleReplacementPlugin(),
-        // new webpack.NoEmitOnErrorsPlugin()
+        new webpack.NoEmitOnErrorsPlugin()
     ]
 });
 

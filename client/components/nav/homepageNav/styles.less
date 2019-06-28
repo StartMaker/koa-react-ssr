@@ -1,0 +1,60 @@
+.function{
+  .px2rem(@px){
+    return : unit(@px*320/@designWidth/20 , rem);
+  }
+}
+@designWidth: 750;
+
+.ant-drawer{
+  //padding-top: px2rem(64);
+}
+/*
+nav style.less
+*/
+.ant-layout{
+  font-size: 0;
+
+  &>.ant-layout-header{
+    height: auto;
+    line-height: 4;
+    padding-right: 15px;
+    padding-left: 15px;
+    z-index: 1001;
+
+    &>div{
+      float: left;
+
+      .ant-btn{
+        height: auto;
+        font-size: px2rem(14);
+        color: #ffffff;
+        background: transparent;
+        border: none;
+        outline: none;
+        padding-left: 0;
+        padding-right: 0;
+
+        .menu{
+          &:after{
+            content: '菜单';
+            vertical-align: middle;
+            margin-left: 6px;
+          }
+        }
+      }
+      .ant-divider{
+        height: px2rem(14);
+        min-height: 12px;
+        top: -0.125em;
+      }
+      span{
+        font-size: px2rem(14);
+        color: #ffffff;
+        vertical-align: -0.125em;
+      }
+    }
+    &>div+div{
+      float: right;
+    }
+  }
+}

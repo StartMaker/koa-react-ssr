@@ -1,6 +1,8 @@
 import React from 'react';
 import {Icon, Spin} from "antd";
 
+import './styles.less';
+
 const loading = <Icon type="loading" style={{ fontSize: 24, color: '#1890ff' }} spin />;
 
 class Loading extends React.Component {

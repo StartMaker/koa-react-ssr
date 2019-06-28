@@ -10,6 +10,8 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
 //预渲染
 // const PreRender = require('prerender-spa-plugin');
+//压缩css文件
+const optimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
 
 const config = webpackMerge(baseConfig, {
     mode: 'production',
@@ -25,9 +27,9 @@ const config = webpackMerge(baseConfig, {
         client: path.resolve(__dirname, "../client/build/buildSSR.js")
     },
     externals: [
-        nodeExternals({
-            whitelist: /\.less$/,
-        })
+        // nodeExternals({
+        //     whitelist: /\.less$/,
+        // })
     ],
     module: {
         rules: [
@@ -45,19 +47,7 @@ const config = webpackMerge(baseConfig, {
                         }
                     },
                     {
-                        loader: require.resolve('postcss-loader'),
-                        options: {
-                            exec: true,
-                            plugins: [
-                                require('precss'),
-                                require('autoprefixer')({
-                                    browsers: [
-                                        "> 0.01%"
-                                    ],
-                                    flexbox: 'no-2009',
-                                })
-                            ]
-                        }
+                        loader: require.resolve('postcss-loader')
                     }
                 ]
             },
@@ -75,25 +65,17 @@ const config = webpackMerge(baseConfig, {
                         }
                     },
                     {
-                        loader: require.resolve('postcss-loader'),
-                        options: {
-                            // exec: true,
-                            plugins: [
-                                require('precss'),
-                                require('autoprefixer')({
-                                    browsers: [
-                                        "> 0.01%"
-                                    ],
-                                    flexbox: 'no-2009',
-                                })
-                            ]
-                        }
+                        loader: require.resolve('postcss-loader')
                     },
                     {
                         loader: require.resolve('sass-loader')
                     }
                 ]
             },
+            // {
+            //     test: /\.json$/,
+            //     use: require.resolve('json-loader')
+            // },
             {
                 test: /\.less$/,
                 use: [
@@ -108,20 +90,7 @@ const config = webpackMerge(baseConfig, {
                         }
                     },
                     {
-                        loader: require.resolve('postcss-loader'),
-                        options: {
-                            //不能加exec，会报错
-                            // exec: true,
-                            plugins: [
-                                require('precss'),
-                                require('autoprefixer')({
-                                    browsers: [
-                                        "> 0.01%"
-                                    ],
-                                    flexbox: 'no-2009',
-                                })
-                            ]
-                        }
+                        loader: require.resolve('postcss-loader')
                     },
                     {
                         loader: require.resolve('less-loader'),
@@ -136,15 +105,18 @@ const config = webpackMerge(baseConfig, {
         ]
     },
     optimization: {
-        // 压缩js
+        // 压缩js、css
         minimizer: [
-            new UglifyJsPlugin({
-                uglifyOptions: {
-                    ie8: true,
-                    ecma: 8
-                }
-            })
+            // new UglifyJsPlugin({
+            //     uglifyOptions: {
+            //         ie8: true,
+            //         ecma: 8
+            //     }
+            // }),
+            new optimizeCssAssetsWebpackPlugin({})
         ],
+        //清除无用的代码
+        usedExports:true,
         // 抽离公用的js部分 , 配置自动提取node_modules里用到的模块如jquery
         splitChunks: {
             cacheGroups: {
@@ -167,9 +139,6 @@ const config = webpackMerge(baseConfig, {
                 'NODE_ENV': JSON.stringify('production')
             },
         }),
-        // new ExtractTextWebpackPlugin({
-        //     filename: '[name].css'
-        // })
         // new PreRender({
         //     staticDir: path.join(__dirname,'dist'),
         //     routes: ['/']

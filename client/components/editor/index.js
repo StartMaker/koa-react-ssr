@@ -6,7 +6,7 @@ class Index extends React.PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            text: '',
+            content: '',
             title: ''
         }
     }
@@ -15,14 +15,10 @@ class Index extends React.PureComponent {
             title: ev.target.value
         });
     };
-    textChange = (content, delta, source, editor) => {
-        console.log(content);
-        console.log(delta);
-        console.log(source);
-        console.log(editor);
-        // this.setState({
-        //     text: value
-        // })
+    contentChange = (content) => {
+        this.setState({
+            content: content
+        })
     };
 
     render() {
@@ -47,15 +43,15 @@ class Index extends React.PureComponent {
                 ['clean']
             ]
         };
-        const {titleChange, textChange} = this;
-        const {text} = this.props;
+        const {titleChange, contentChange} = this;
+        const {content} = this.state;
 
         return (
             [
                 <div className={'input-title'} key={1}>
                     <input type={'text'} placeholder={'输入文章标题...'} onChange={titleChange}/>
                 </div>,
-                <ReactQuill modules={option} onChange={textChange}  key={2} defaultValue={"111"} />
+                <ReactQuill modules={option} onChange={contentChange}  key={2} defaultValue={"111"} value={content} placeholder={'输入正文...'}/>
             ]
         )
     }

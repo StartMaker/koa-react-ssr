@@ -1,7 +1,10 @@
-const { JSDOM } = require('jsdom');
-module.exports = (body) => {
-    return (
-        `
+const DOMRenderServer = require('react-dom/server');
+const Body = require('../../dist/static/client');
+
+module.exports = async (ctx) => {
+  const content = DOMRenderServer.renderToString(Body.default(ctx.request.url,{}));
+  const html = (
+    `
         <!DOCTYPE html>
         <html lang="en">
         <head>
@@ -14,9 +17,10 @@ module.exports = (body) => {
 <!--            <link rel="stylesheet" type="text/css" href="/css/client-ddc5f4ecb9f06661039b.css"/>-->
         </head>
         <body>
-        <div id="root">${body}</div>
+        <div id="root">${content}</div>
         </body>
         </html>
         `
-    )
+  );
+  ctx.response.body = html;
 };

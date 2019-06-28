@@ -1,0 +1,110 @@
+.function{
+  .px2rem(@px){
+    return : unit(@px*320/@designWidth/20 , rem);
+  }
+}
+@designWidth: 750;
+
+/*主页的style.less*/
+#home{
+  font-size: 0;
+
+  &>.ant-layout>.ant-layout-content{
+
+    .ant-menu{
+
+      &>li{
+        margin-right: px2rem(30);
+        padding-left: px2rem(10);
+        padding-right: px2rem(10);
+      }
+      &>li:nth-child(2):after{
+        content: '全部动态';
+        vertical-align: -0.3em;
+      }
+      &>li:nth-child(4):after{
+        content: '博客动态';
+        vertical-align: -0.3em;
+      }
+      &>li:nth-child(6):after{
+        content: '技术文档';
+        vertical-align: -0.3em;
+      }
+      &>li:nth-child(8):after{
+        content: '小事记';
+        vertical-align: -0.3em;
+      }
+    }
+    #article{
+      display: flex;
+
+      #article_column{
+        flex-basis: 100%;
+        flex-grow: 1;
+        user-select: none;
+
+        a{
+          text-decoration: none;
+        }
+        .ant-card{
+          width: 100%;
+
+          h5{
+            font-size: px2rem(16);
+            margin-bottom: 0.4rem;
+            float: left;
+            max-width: 25em;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            padding-bottom: 1px;
+
+            &>span{
+              font-size: px2rem(12);
+              padding-left: 3px;
+              padding-right: 3px;
+              border: 1px solid #FF7800;
+              color: #FF7800;
+              margin-right: 10px;
+            }
+          }
+          p{
+            margin-bottom: 0.4rem;
+            float: right;
+
+            &>span{
+              vertical-align: -0.19em;
+              margin-left: 5px;
+              font-variant: all-petite-caps;
+            }
+            &>span+span{
+              margin-left: 15px;
+              opacity: 0.8;
+              font-size: 20%;
+              vertical-align: bottom;
+            }
+          }
+          p+p{
+            margin-bottom: 0;
+            float: left;
+            clear: both;
+            height: 4.8em;
+            text-overflow: ellipsis;
+            -webkit-box-orient:vertical;
+            display: -webkit-box;
+            -webkit-line-clamp:3;
+            overflow: hidden;
+            word-break: break-all;
+            width: 100%;
+          }
+        }
+      }
+      //#recommend_column{
+      //    flex-basis: 20%;
+      //    @media screen and (max-width: 1000px){
+      //        display: none;
+      //    }
+      //}
+    }
+  }
+}

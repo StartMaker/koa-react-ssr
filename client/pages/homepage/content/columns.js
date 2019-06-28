@@ -75,7 +75,7 @@ class Columns extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    const {blog: {content}} = state;
+    const {content} = state.get('blog');
     return {content};
 };
 

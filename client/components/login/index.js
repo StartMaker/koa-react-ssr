@@ -1,12 +1,12 @@
 import React from 'react';
-import {Modal, Button, Form, Checkbox, message} from "antd";
+import {Modal, Button, Form, Checkbox, message} from 'antd';
 import {connect} from 'react-redux';
 
-import {login} from '../../actions/account';
-import {ControlInput} from '../input';
-import {loginForAuthorization} from "../../actions/account";
+import {login} from '&actions/account';
+import {ControlInput} from '&components/input';
+import {loginForAuthorization} from '&actions/account';
 
-class Index extends React.Component {
+class LoginForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -61,7 +61,7 @@ class Index extends React.Component {
             [
                 <Button key={1} onClick={open_modal}>登录</Button>,
                 <Modal visible={modal.visible} key={2} footer={null} onCancel={close_modal}>
-                    <Form>
+                    <Form onSubmit={login}>
                         <Form.Item>
                             账号密码登录
                         </Form.Item>
@@ -88,7 +88,7 @@ class Index extends React.Component {
                             </a>
                         </Form.Item>
                         <Form.Item>
-                            <Button type="primary" block={true} onClick={login}>
+                            <Button type="primary" block={true} htmlType={'submit'}>
                                 Log in
                             </Button>
                         </Form.Item>
@@ -100,8 +100,7 @@ class Index extends React.Component {
 }
 
 const mapStateToProps = state => {
-    const {account} = state;
-    return {account};
+    return {account: state.get('account')};
 };
 const mapDispatchToProps = dispatch => {
     return {
@@ -117,4 +116,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Index);
+)(LoginForm);

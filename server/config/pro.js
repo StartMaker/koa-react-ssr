@@ -4,8 +4,8 @@ module.exports = (app) => {
     app.use(koa_static('../dist/static'));
 
     //配置静态路由
-    const {set_static_routers} = require('../router');
-    set_static_routers(app);
+    const pageRouter = require('../router');
+    app.use(pageRouter.routes()).use(pageRouter.allowedMethods());
 
     app.listen(3100,function () {
         console.log('listen to 3100');

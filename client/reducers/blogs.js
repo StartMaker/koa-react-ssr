@@ -1,6 +1,7 @@
+import {Map} from 'immutable';
 import {blog} from "../actions/action_type";
 
-export default function (state = {}, action) {
+export default function (state = Map({}), action) {
     switch (action.type) {
         case blog.display:
             return {

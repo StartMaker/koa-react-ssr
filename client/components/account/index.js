@@ -26,7 +26,7 @@ class Index extends React.Component{
                 </Menu.Item>
             </Menu>
         );
-        switch (account.login_status) {
+        switch (account.loginStatus) {
             case true:
                 return (
                     <Dropdown overlay={menu} placement={'bottomRight'}>
@@ -44,8 +44,7 @@ class Index extends React.Component{
 }
 
 const mapStateToProps = (state) => {
-    const {account}  = state;
-    return {account};
+    return {account: state.get('account')};
 };
 
 export default connect(

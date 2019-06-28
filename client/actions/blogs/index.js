@@ -21,7 +21,7 @@ export const blog_display = () => async dispatch => {
 * 博客更多项
 * */
 export const blog_more = () => async (dispatch, getState) => {
-    let {blog:{page}} = getState();
+    let {page} = getState().get('blog');
     page++;
     let {data, status, statusText} =  await req.get('/api/blog/more',{page: page});
     dispatch({

@@ -3,8 +3,9 @@ import {Layout} from 'antd';
 
 const {Header, Content} = Layout;
 
-import Nav from '../../components/nav';
-import Editor from '../../components/editor';
+import './styles.less';
+import Nav from '&components/nav/writeArticleNav';
+import Editor from '&components/editor';
 
 class WriteArticle extends React.Component {
     constructor(props) {

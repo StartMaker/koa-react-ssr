@@ -1,0 +1,42 @@
+.function{
+  .px2rem(@px){
+    return : unit(@px*320/@designWidth/20 , rem);
+  }
+}
+@designWidth: 750;
+
+/*文本编辑页面的style.less*/
+#writeArticle{
+  font-size: 0;
+  height: 100%;
+
+  &>.ant-layout{
+    height: calc(100% - px2rem(56));
+  }
+  &>.ant-layout>.ant-layout-content{
+    height: 100%;
+
+    .input-title{
+      height: px2rem(60);
+
+      input{
+        width: 100%;
+        height: 100%;
+        font-size: px2rem(30);
+        border: none;
+        outline: none;
+        text-indent: 0.5em;
+      }
+    }
+    .quill{
+      height: calc(100% - px2rem(60));
+
+      .ql-toolbar{
+        height: px2rem(42);
+      }
+      .ql-container{
+        height: calc(100% - px2rem(42));
+      }
+    }
+  }
+}

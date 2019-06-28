@@ -24,7 +24,15 @@ export const loginForAuthorization = () => async dispatch => {
     return dispatch({
         type: account.login,
         response_data: data
-    })
+    });
+};
+
+export const loginOut = () => async dispatch =>{
+    let {data} = await req.get('/api/loginOut');
+    return dispatch({
+        type: account.loginOut,
+        response_data: data
+    });
 };
 
 export const register = (username, password) => async dispatch => {

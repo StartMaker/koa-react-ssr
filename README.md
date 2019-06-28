@@ -9,6 +9,8 @@ react ssr
 
 3、react-hot-loader：react组件的热加载，使用方法在npm上有详细介绍
 
+4、解决无window等BOM对象的问题，引入模块JSDOM
+
 ###### 注意事项
 
 1、在对客户端代码打包时，如果不是css in js模式，postcss-loader中exec需要禁用,否则会报错

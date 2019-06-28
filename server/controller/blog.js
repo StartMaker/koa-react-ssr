@@ -1,5 +1,5 @@
-const koa_router = require('koa-router');
-const router = new koa_router();
+const koaRouter = require('koa-router');
+const router = new koaRouter();
 
 const blog = require('../mode/blog');
 const {runSql} = require('../mode');

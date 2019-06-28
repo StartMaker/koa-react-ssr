@@ -1,5 +1,6 @@
-import {combineReducers} from "redux";
-import {createStore,applyMiddleware} from "redux";
+import { combineReducers } from 'redux-immutable';
+import {Map} from 'immutable';
+import {createStore,applyMiddleware} from 'redux';
 import redux_thunk from 'redux-thunk';
 import redux_logger from 'redux-logger';
 
@@ -10,16 +11,16 @@ const reducers = combineReducers({
     account,
     blog
 });
-const init_state = {
+const init_state = Map({
     account:{
         username: null,
         token: undefined,
-        login_status: false
+        loginStatus: false
     },
     blog: {
         content: []
     }
-};
+});
 
 export default createStore(
     reducers,
