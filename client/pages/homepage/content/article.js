@@ -1,16 +1,7 @@
-import React, {lazy, Suspense} from 'react';
+import React from 'react';
 
-const Columns = lazy(() => import('./columns'));
+import Columns from './columns';
 import Recommend_Column from './recommend_column';
-import Loading from '../../../components/loading';
-
-const create_loading = (id) => {
-    return (
-        <div id={id}>
-            <Loading/>
-        </div>
-    )
-};
 
 class Index extends React.Component {
     constructor(props) {
@@ -18,14 +9,12 @@ class Index extends React.Component {
     }
 
     render() {
-        return (
-            <div id={'article'}>
-                <Suspense fallback={create_loading('article_column')}>
-                    <Columns/>
-                </Suspense>
-                <Recommend_Column/>
-            </div>
-        )
+      return (
+        <div id={'article'}>
+          <Columns/>
+          <Recommend_Column/>
+        </div>
+      )
     }
 }
 

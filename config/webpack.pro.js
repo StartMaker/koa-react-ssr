@@ -36,7 +36,7 @@ const config = webpackMerge(baseConfig, {
             {
                 test: /\.css$/,
                 use: [
-                    require.resolve('css-hot-loader'),
+                    // require.resolve('css-hot-loader'),
                     MiniCssExtractPlugin.loader,
                     {
                         loader: require.resolve('css-loader'),
@@ -54,7 +54,7 @@ const config = webpackMerge(baseConfig, {
             {
                 test: /\.(scss|sass)$/,
                 use: [
-                    require.resolve('css-hot-loader'),
+                    // require.resolve('css-hot-loader'),
                     MiniCssExtractPlugin.loader,
                     {
                         loader: require.resolve('css-loader'),
@@ -97,7 +97,10 @@ const config = webpackMerge(baseConfig, {
                         options: {
                             plugins: [
                                 new LessPluginFunctions()
-                            ]
+                            ],
+                            options: {
+                                javascriptEnabled: true
+                            }
                         }
                     }
                 ]
@@ -113,7 +116,18 @@ const config = webpackMerge(baseConfig, {
             //         ecma: 8
             //     }
             // }),
-            new optimizeCssAssetsWebpackPlugin({})
+            new optimizeCssAssetsWebpackPlugin({
+                assetNameRegExp: /\.css$/g,
+                cssProcessorOptions: {
+                    safe: true,
+                    autoprefixer: { disable: true }, // 这里是个大坑，稍后会提到
+                    mergeLonghand: false,
+                    discardComments: {
+                        removeAll: true // 移除注释
+                    }
+                },
+                canPrint: true
+            })
         ],
         //清除无用的代码
         usedExports:true,
@@ -131,7 +145,7 @@ const config = webpackMerge(baseConfig, {
     plugins: [
         new webpack.NoEmitOnErrorsPlugin(),
         new MiniCssExtractPlugin({ // 在plugins中配置属性
-            filename: 'css/[name]-[contentHash].css', // 配置提取出来的css名称
+            filename: 'css/[name].css', // 配置提取出来的css名称
             chunkFilename: "css/chunk-[id].css"
         }),
         new webpack.DefinePlugin({

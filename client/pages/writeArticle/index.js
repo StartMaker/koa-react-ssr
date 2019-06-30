@@ -5,7 +5,7 @@ const {Header, Content} = Layout;
 
 import './styles.less';
 import Nav from '&components/nav/writeArticleNav';
-import Editor from '&components/editor';
+// import Editor from '&components/editor';
 
 class WriteArticle extends React.Component {
     constructor(props) {
@@ -24,7 +24,7 @@ class WriteArticle extends React.Component {
                 <Layout>
                     <Content>
 
-                        <Editor/>
+                        {/*<Editor/>*/}
                     </Content>
                 </Layout>
             </Layout>

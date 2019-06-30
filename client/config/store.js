@@ -1,6 +1,6 @@
-import { combineReducers } from 'redux-immutable';
 import {Map} from 'immutable';
-import {createStore,applyMiddleware} from 'redux';
+import { combineReducers } from 'redux-immutable';
+import {createStore, applyMiddleware} from 'redux';
 import redux_thunk from 'redux-thunk';
 import redux_logger from 'redux-logger';
 
