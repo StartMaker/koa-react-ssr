@@ -7,7 +7,7 @@ module.exports = (app) => {
     const router = new koa_router();
     app.use(router.routes()).use(router.allowedMethods());
     //静态资源加载
-    const config = require('../../config/webpack.dev');
+    const config = require('../../config/webpack.devClient');
     koa_webpack({
         config: config,
         devMiddleware: {

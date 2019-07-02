@@ -4,7 +4,7 @@ import App from '../index.js';
 import {Provider} from 'react-redux';
 import store from '../config/store';
 import {ConfigProvider} from "antd";
-import 'hotcss/src/hotcss' ;
+import 'hotcss/src/hotcss';
 
 import {BrowserRouter as Router} from "react-router-dom";
 

@@ -1,7 +1,6 @@
 //客户端打包 base
 const path = require('path');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HappyPack = require('happypack');
 const HappyPackPool = HappyPack.ThreadPool({size: 5});
 
@@ -33,14 +32,6 @@ module.exports = {
                     // }
                 ]
             },
-            // {
-            //     test: /\.(png|svg|jpg|gif|ttf)$/,
-            //     use: [
-            //         {
-            //             loader: 'file-loader'
-            //         }
-            //     ]
-            // },
             {
                 test: /\.(ts|tsx)?$/,
                 include: path.resolve(__dirname, 'src'),
@@ -70,9 +61,6 @@ module.exports = {
         }
     },
     plugins: [
-        new CleanWebpackPlugin(['dist'], {
-            root: path.resolve(__dirname, '..'),
-        }),
         new HappyPack({
             id: 'babel',
             threadPool: HappyPackPool,

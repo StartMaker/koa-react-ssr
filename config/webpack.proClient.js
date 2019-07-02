@@ -18,19 +18,19 @@ const config = webpackMerge(baseConfig, {
     target: 'node',
     output: {
         publicPath: "./",
-        path: path.join(__dirname, '../dist/static'),
+        path: path.join(__dirname, '../dist/client'),
         filename: '[name].js',
-        libraryTarget: 'commonjs2',
+        // libraryTarget: 'commonjs2',
         // library: 'MyClient'
     },
     entry: {
-        client: path.resolve(__dirname, "../client/build/buildSSR.js")
+        client: path.resolve(__dirname, "../client/build/proClient.js")
     },
-    externals: [
-        // nodeExternals({
-        //     whitelist: /\.less$/,
-        // })
-    ],
+    // externals: [
+    //     nodeExternals({
+    //         whitelist: /\.less$/,
+    //     })
+    // ],
     module: {
         rules: [
             {

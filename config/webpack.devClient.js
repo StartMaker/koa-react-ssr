@@ -3,6 +3,7 @@ const path = require('path');
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const baseConfig = require('./webpack.base');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const LessPluginFunctions = require('less-plugin-functions');
 
@@ -25,7 +26,7 @@ const  config = webpackMerge(baseConfig, {
         historyApiFallback: true
     },
     entry: {
-        client: [path.resolve(__dirname, "../client/build/devSSR.js")]
+        client: [path.resolve(__dirname, "../client/build/devClient.js")]
     },
     devtool: 'source-map',
     module: {
@@ -63,6 +64,9 @@ const  config = webpackMerge(baseConfig, {
         ]
     },
     plugins: [
+        new CleanWebpackPlugin(['dist'], {
+            root: path.resolve(__dirname, '..'),
+        }),
         new HtmlWebpackPlugin({
             template: "./client/index.html",
             inject: true,
