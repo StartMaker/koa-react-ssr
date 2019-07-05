@@ -68,7 +68,7 @@ const  config = webpackMerge(baseConfig, {
             root: path.resolve(__dirname, '..'),
         }),
         new HtmlWebpackPlugin({
-            template: "./client/index.html",
+            template: "../client/index.html",
             inject: true,
             favicon: './client/static/image/logo.jpg',
             filename: "index.html",

@@ -8,7 +8,7 @@ import {account} from "../action_type";
 * */
 export const login = (username, password) =>async dispatch => {
     let {data} = await req.post('/api/login',{username, password});
-    sessionStorage.setItem('Authorization',data.msg.jwt);
+    // sessionStorage.setItem('Authorization',data.msg.jwt);
     return dispatch({
         type: account.login,
         response_data: data
@@ -20,7 +20,6 @@ export const login = (username, password) =>async dispatch => {
 * */
 export const loginForAuthorization = () => async dispatch => {
     let {data} = await req.get('/api/loginByAuthorization');
-    console.log(data);
     return dispatch({
         type: account.login,
         response_data: data

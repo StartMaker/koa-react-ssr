@@ -3,6 +3,11 @@ import React from 'react';
 import {connect} from "react-redux";
 import {Dropdown, Menu} from "antd";
 
+import withStyle from 'isomorphic-style-loader/withStyles';
+import antdIconStyle from 'antd/lib/icon/style/index.css';
+import antdDropdownStyle from 'antd/lib/dropdown/style/index.css';
+import antdMenuStyle from 'antd/lib/menu/style/index.css';
+
 import IconFont from '../../static/icons';
 import Login from '../login';
 
@@ -49,4 +54,4 @@ const mapStateToProps = (state) => {
 
 export default connect(
     mapStateToProps
-)(Index);
+)(withStyle(antdMenuStyle, antdDropdownStyle, antdIconStyle)(Index));

@@ -2,7 +2,10 @@ import React from 'react';
 import {hot} from "react-hot-loader";
 import {Route, Switch} from 'react-router-dom';
 
-import './static/styles/reset.less';
+//引入styles
+import withStyle from 'isomorphic-style-loader/withStyles';
+import resetStyle from './static/styles/reset.less';
+
 import Homepage from './pages/homepage';
 // import WriteArticle from './pages/writeArticle'
 import {Provider} from './config/context';
@@ -28,4 +31,4 @@ class App extends React.Component{
     }
 }
 
-export default App;
+export default withStyle(resetStyle)(App);

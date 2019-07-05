@@ -6,7 +6,8 @@ axios.interceptors.request.use(function (config) {
     config.headers = {
         'Accept': "application/json, text/plain, */*",
         'Content-Type': "application/json;charset=utf-8",
-        'Authorization': sessionStorage.getItem('Authorization')
+        'Authorization': ''
+        // 'Authorization': sessionStorage.getItem('Authorization')
     };
     config.timeout = 5000;
     config.baseURL = url;

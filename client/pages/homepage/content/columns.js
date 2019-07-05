@@ -2,6 +2,11 @@ import React from 'react';
 import {Card} from "antd";
 import {connect} from "react-redux";
 
+//styles引入
+import withStyle from 'isomorphic-style-loader/withStyles';
+import antdCardStyle from 'antd/lib/card/style/index.css';
+import antdIconStyle from 'antd/lib/icon/style/index.css';
+
 const categories = [
     '文章'
 ];
@@ -18,7 +23,6 @@ class Columns extends React.Component {
         }
     }
     componentDidMount() {
-        console.log(this);
         const {scroll} = this;
         window.addEventListener('scroll', scroll);
     }
@@ -90,4 +94,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Columns);
+)(withStyle(antdCardStyle, antdIconStyle)(Columns));

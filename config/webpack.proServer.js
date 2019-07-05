@@ -4,8 +4,7 @@ const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const baseConfig = require('./webpack.base');
 const LessPluginFunctions = require('less-plugin-functions');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const nodeExternals = require('webpack-node-externals');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 //预渲染
 // const PreRender = require('prerender-spa-plugin');
 //压缩css文件
@@ -15,33 +14,27 @@ const config = webpackMerge(baseConfig, {
   mode: 'production',
   target: 'node',
   output: {
-    publicPath: "./",
-    path: path.join(__dirname, '../dist/server'),
+    publicPath: "/",
+    path: path.join(__dirname, '../dist'),
     filename: '[name].js',
     libraryTarget: 'commonjs2',
     // library: 'MyClient'
   },
   entry: {
-    server: path.resolve(__dirname, "../client/build/proServer.js")
+    serverRender: path.resolve(__dirname, "../client/build/proServer.js")
   },
-  externals: [
-    nodeExternals({
-      whitelist: /\.less$/,
-    })
-  ],
   module: {
     rules: [
       {
         test: /\.css$/,
         use: [
-          // require.resolve('css-hot-loader'),
-          MiniCssExtractPlugin.loader,
+          {
+            loader: require.resolve('isomorphic-style-loader')
+          },
           {
             loader: require.resolve('css-loader'),
             options: {
               importLoaders: 1,
-              minimize: true,
-              sourceMap: false
             }
           },
           {
@@ -52,14 +45,13 @@ const config = webpackMerge(baseConfig, {
       {
         test: /\.(scss|sass)$/,
         use: [
-          // require.resolve('css-hot-loader'),
-          MiniCssExtractPlugin.loader,
+          {
+            loader: require.resolve('isomorphic-style-loader')
+          },
           {
             loader: require.resolve('css-loader'),
             options: {
-              importLoaders: 1,
-              minimize: true,
-              sourceMap: false
+              importLoaders: 1
             }
           },
           {
@@ -70,21 +62,16 @@ const config = webpackMerge(baseConfig, {
           }
         ]
       },
-      // {
-      //     test: /\.json$/,
-      //     use: require.resolve('json-loader')
-      // },
       {
         test: /\.less$/,
         use: [
-          // require.resolve('css-hot-loader'),
-          MiniCssExtractPlugin.loader,
+          {
+            loader: require.resolve('isomorphic-style-loader')
+          },
           {
             loader: require.resolve('css-loader'),
             options: {
-              importLoaders: 1,
-              minimize: true,
-              sourceMap: false
+              importLoaders: 1
             }
           },
           {
@@ -118,7 +105,7 @@ const config = webpackMerge(baseConfig, {
         assetNameRegExp: /\.css$/g,
         cssProcessorOptions: {
           safe: true,
-          autoprefixer: { disable: true }, // 这里是个大坑，稍后会提到
+          autoprefixer: { disable: true },
           mergeLonghand: false,
           discardComments: {
             removeAll: true // 移除注释
@@ -142,10 +129,13 @@ const config = webpackMerge(baseConfig, {
   },
   plugins: [
     new webpack.NoEmitOnErrorsPlugin(),
-    new MiniCssExtractPlugin({ // 在plugins中配置属性
-      filename: 'css/[name].css', // 配置提取出来的css名称
-      chunkFilename: "css/chunk-[id].css"
+    new CleanWebpackPlugin(['dist'],{
+      root: path.resolve(__dirname, '..'),
     }),
+    // new MiniCssExtractPlugin({ // 在plugins中配置属性
+    //     //   filename: 'css/[name].css', // 配置提取出来的css名称
+    //     //   chunkFilename: "css/chunk-[id].css"
+    //     // }),
     new webpack.DefinePlugin({
       'process.env':{
         'NODE_ENV': JSON.stringify('production')

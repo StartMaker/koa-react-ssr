@@ -7,7 +7,6 @@ import {blog} from "../action_type";
 * */
 export const blog_display = () => async dispatch => {
     let {data, status, statusText} = await req.get('/api/blog/display');
-    console.log(dispatch);
     dispatch({
         type: blog.display,
         page: 1,

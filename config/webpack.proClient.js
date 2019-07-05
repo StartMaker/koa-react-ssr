@@ -15,13 +15,10 @@ const optimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plug
 
 const config = webpackMerge(baseConfig, {
     mode: 'production',
-    target: 'node',
     output: {
         publicPath: "./",
         path: path.join(__dirname, '../dist/client'),
-        filename: '[name].js',
-        // libraryTarget: 'commonjs2',
-        // library: 'MyClient'
+        filename: '[name].js'
     },
     entry: {
         client: path.resolve(__dirname, "../client/build/proClient.js")

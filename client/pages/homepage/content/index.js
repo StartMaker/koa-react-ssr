@@ -2,6 +2,10 @@ import React from 'react';
 import {connect} from "react-redux";
 import {Icon, Menu} from "antd";
 
+//style引入
+import withStyle from 'isomorphic-style-loader/withStyles';
+import antdMenuStyle from 'antd/lib/menu/style/index.css';
+
 import {blog_display} from "../../../actions/blogs";
 import Article from './article';
 import IconFont from '../../../static/icons';
@@ -49,4 +53,4 @@ class Content extends React.Component {
     }
 }
 
-export default connect()(Content);
+export default connect()(withStyle(antdMenuStyle)(Content));

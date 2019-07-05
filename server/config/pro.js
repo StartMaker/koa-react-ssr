@@ -3,7 +3,7 @@ module.exports = (app) => {
     // const a = require('../../dist/static/css/client.css');
     const path = require('path');
     const koa_static = require('koa-static');
-    app.use(koa_static(path.join(__dirname, '../../dist/static')), {
+    app.use(koa_static(path.join(__dirname, '../../dist')), {
         maxage: 1000 * 60 * 60 * 24 * 365,
         defer: false
         // setHeaders: (res,path) => {
@@ -18,7 +18,7 @@ module.exports = (app) => {
     const pageRouter = require('../router');
     app.use(pageRouter.routes()).use(pageRouter.allowedMethods());
 
-    app.listen(3100,function () {
-        console.log('listen to 3100');
+    app.listen(3000,function () {
+        console.log('listen to 3000');
     });
 };
