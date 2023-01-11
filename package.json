@@ -87,7 +87,7 @@
     "hotcss": "^2.2.1",
     "immutable": "^4.0.0-rc.12",
     "jsdom": "^15.1.1",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",
     "koa-compress": "^3.0.0",
